@@ -21,7 +21,7 @@ export default function Modal ({value, onClose}){
     return () => {
       document.removeEventListener("keydown", onCloseModalByEscape);
     };
-  }, []);
+  }, [onCloseModalByEscape]);
 
     
   const onCloseModal = (e) => {
