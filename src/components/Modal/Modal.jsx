@@ -9,9 +9,10 @@ const modalRootRef = document.querySelector("#modal-root");
 export default function Modal ({value, onClose}){
   
   const onCloseModalByEscape = (e) => {
-    if (e.code === "Escape") {
-     onClose(false);
+    if (e.code !== "Escape") {
+      return
     };
+    onClose(false);
   };
 
 
@@ -21,7 +22,7 @@ export default function Modal ({value, onClose}){
     return () => {
       document.removeEventListener("keydown", onCloseModalByEscape);
     };
-  }, [onCloseModalByEscape]);
+  }, []);
 
     
   const onCloseModal = (e) => {
