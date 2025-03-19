@@ -7,22 +7,23 @@ const modalRootRef = document.querySelector("#modal-root");
 
 
 export default function Modal ({value, onClose}){
-  
-  const onCloseModalByEscape = (e) => {
-    if (e.code !== "Escape") {
-      return
-    };
-    onClose(false);
-  };
 
 
+ 
   useEffect(() => {
+
+        const onCloseModalByEscape = (e) => {
+      if (e.code === "Escape") {
+        onClose(false);  // Закрытие модалки
+      }
+    };
+
     document.addEventListener("keydown", onCloseModalByEscape);
 
     return () => {
       document.removeEventListener("keydown", onCloseModalByEscape);
     };
-  }, []);
+  }, [onClose]);
 
     
   const onCloseModal = (e) => {

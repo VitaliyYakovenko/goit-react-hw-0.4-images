@@ -38,15 +38,13 @@ export default function ImageGallery({ params }) {
         if (page > 1) {
             setStatus("pending");
 
-            console.log(total);
-
             getImg(params, page).then(data => {
                 setImages(prev => [...prev, ...data.hits]);
                 setStatus("success")
             }).catch(() => setStatus("error"));
         };
 
-    }, [page]);
+    }, [page, params, total]);
 
     useEffect(() => {
         if (images.length > 0) {
